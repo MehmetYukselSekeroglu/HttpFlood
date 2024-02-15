@@ -5,7 +5,7 @@
 
 
 
-<p>Http Get istekleri ile Hizmet Reddi ( DoS ) testleri yapmak için basit bir araç, multihtread özelliği ile gerçepe yakın senaryolar oluşturulabilir. </p>
+<p>Http Get istekleri ile Hizmet Reddi ( DoS ) testleri yapmak için basit bir araç, multihtread özelliği ile gerçeğe yakın senaryolar oluşturulabilir. </p>
 
 
 ## Gereksinimlerin Kurulması
